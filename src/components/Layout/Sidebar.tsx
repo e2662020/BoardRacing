@@ -115,20 +115,7 @@ const Sidebar: React.FC<SidebarProps> = ({ onMenuItemClick }) => {
           gap: 12,
         }}
       >
-        {/* 奥运五环 - 白色版本 */}
-        <svg width="40" height="20" viewBox="0 0 100 50">
-          {/* 蓝环 */}
-          <circle cx="20" cy="20" r="12" fill="none" stroke="#FFFFFF" strokeWidth="3"/>
-          {/* 黄环 */}
-          <circle cx="38" cy="32" r="12" fill="none" stroke="#FFFFFF" strokeWidth="3"/>
-          {/* 黑环 */}
-          <circle cx="56" cy="20" r="12" fill="none" stroke="#FFFFFF" strokeWidth="3"/>
-          {/* 绿环 */}
-          <circle cx="74" cy="32" r="12" fill="none" stroke="#FFFFFF" strokeWidth="3"/>
-          {/* 红环 */}
-          <circle cx="92" cy="20" r="12" fill="none" stroke="#FFFFFF" strokeWidth="3"/>
-        </svg>
-        MOB导播系统
+        一起赛事
       </div>
       <Menu
         theme="dark"
