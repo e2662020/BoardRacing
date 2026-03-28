@@ -1,0 +1,195 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: #f0f2f5;
+}
+
+/* OreUI 主题背景色 - 使用更高优先级 */
+body.theme-oreui,
+html body.theme-oreui {
+  background-color: #48494A !important;
+}
+
+body.theme-oreui #root {
+  background-color: #48494A;
+  min-height: 100vh;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+/* Ant Design 样式覆盖 */
+.ant-layout {
+  background: #f0f2f5;
+}
+
+/* OreUI 主题布局背景 */
+.theme-oreui .ant-layout {
+  background-color: #48494A !important;
+}
+
+.ant-layout-sider {
+  background: #001529;
+  margin: 0 !important;
+  padding: 0 !important;
+  left: 0 !important;
+}
+
+.ant-layout-sider-children {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* 确保侧边栏紧贴左侧 */
+.ant-layout-has-sider > .ant-layout-sider {
+  left: 0 !important;
+  margin-left: 0 !important;
+}
+
+.ant-menu-dark {
+  background: #001529;
+}
+
+.ant-card {
+  border-radius: 8px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.ant-card-hoverable:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.ant-table {
+  background: #fff;
+}
+
+/* 自定义滚动条 */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+/* 动画效果 */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.3s ease-in;
+}
+
+/* 拖拽样式 */
+.dragging {
+  opacity: 0.5;
+  cursor: move;
+}
+
+/* 选中样式 */
+.selected {
+  outline: 2px solid #1890ff;
+  outline-offset: 2px;
+}
+
+/* 响应式布局 */
+@media (max-width: 768px) {
+  .ant-layout-sider {
+    position: fixed !important;
+    z-index: 999;
+    height: 100vh;
+    left: 0 !important;
+  }
+  
+  h1 {
+    font-size: 20px !important;
+  }
+  
+  h2 {
+    font-size: 18px !important;
+  }
+  
+  h3 {
+    font-size: 16px !important;
+  }
+  
+  h4 {
+    font-size: 14px !important;
+  }
+  
+  .ant-card-body {
+    padding: 12px !important;
+  }
+  
+  .ant-table {
+    font-size: 12px;
+  }
+  
+  .ant-btn {
+    font-size: 14px;
+  }
+  
+  .ant-input,
+  .ant-select-selector {
+    font-size: 14px;
+  }
+  
+  .ant-modal {
+    max-width: 95vw !important;
+    margin: 10px !important;
+  }
+  
+  .ant-modal-body {
+    padding: 16px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 18px !important;
+  }
+  
+  .ant-space {
+    gap: 8px !important;
+  }
+  
+  .ant-col {
+    padding: 0 4px !important;
+  }
+  
+  .ant-row {
+    margin: 0 -4px !important;
+  }
+}
