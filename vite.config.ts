@@ -69,4 +69,62 @@ export default defineConfig({
       ]
     })
   ],
+  build: {
+    // 代码分割配置
+    rollupOptions: {
+      output: {
+        // 手动代码分割
+        manualChunks: (id) => {
+          if (id.includes('node_modules')) {
+            if (id.includes('react') || id.includes('react-dom') || id.includes('react-router')) {
+              return 'react-vendor'
+            }
+            if (id.includes('antd') || id.includes('@ant-design')) {
+              return 'antd-vendor'
+            }
+            if (id.includes('zustand')) {
+              return 'state-vendor'
+            }
+            if (id.includes('recharts')) {
+              return 'chart-vendor'
+            }
+            if (id.includes('@tanstack/react-table')) {
+              return 'table-vendor'
+            }
+            return 'vendor'
+          }
+        },
+        // 控制 chunk 大小
+        chunkFileNames: 'assets/js/[name]-[hash].js',
+        entryFileNames: 'assets/js/[name]-[hash].js',
+        assetFileNames: (assetInfo) => {
+          const name = assetInfo.name || ''
+          if (/\.(png|jpe?g|gif|svg|webp|ico)$/i.test(name)) {
+            return 'assets/images/[name]-[hash][extname]'
+          }
+          if (/\.css$/i.test(name)) {
+            return 'assets/css/[name]-[hash][extname]'
+          }
+          return 'assets/[ext]/[name]-[hash][extname]'
+        },
+      },
+    },
+    // 压缩配置 - 使用esbuild默认压缩
+    minify: 'esbuild',
+    // 增加 chunk 大小警告限制
+    chunkSizeWarningLimit: 1000,
+  },
+  // 优化依赖预构建
+  optimizeDeps: {
+    include: [
+      'react',
+      'react-dom',
+      'react-router-dom',
+      'antd',
+      '@ant-design/icons',
+      'zustand',
+      'axios',
+      'dayjs',
+    ],
+  },
 })
