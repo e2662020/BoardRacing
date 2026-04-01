@@ -3,7 +3,6 @@ import { Layout, Button } from 'antd';
 import { MenuOutlined } from '@ant-design/icons';
 import Sidebar from './Sidebar';
 import Header from './Header';
-import { useThemeStore } from '../../stores';
 
 const { Content } = Layout;
 
@@ -12,7 +11,6 @@ interface MainLayoutProps {
 }
 
 const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
-  const { theme } = useThemeStore();
   const [sidebarVisible, setSidebarVisible] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   
@@ -84,7 +82,7 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
             marginTop: 64,
             padding: isMobile ? 16 : 24,
             minHeight: 'calc(100vh - 64px)',
-            background: theme === 'oreui' ? '#48494A' : '#f0f2f5',
+            background: '#000000',
           }}
         >
           {children}

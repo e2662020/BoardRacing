@@ -80,7 +80,7 @@ const Sidebar: React.FC<SidebarProps> = ({ onMenuItemClick }) => {
       label: (
         <span>
           B站开播
-          <Badge count="开发中" style={{ backgroundColor: '#faad14', marginLeft: 8, fontSize: 10 }} />
+          <Badge count="开发中" style={{ backgroundColor: '#f59e0b', marginLeft: 8, fontSize: 10 }} />
         </span>
       ),
       permission: '*',
@@ -96,10 +96,11 @@ const Sidebar: React.FC<SidebarProps> = ({ onMenuItemClick }) => {
     <Sider
       width={220}
       style={{
-        background: '#001529',
+        background: '#111111',
         minHeight: '100vh',
         height: '100vh',
         overflow: 'auto',
+        borderRight: '1px solid #2a2a2a',
       }}
     >
       <div
@@ -108,10 +109,10 @@ const Sidebar: React.FC<SidebarProps> = ({ onMenuItemClick }) => {
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          color: '#fff',
+          color: '#ffffff',
           fontSize: 20,
           fontWeight: 'bold',
-          borderBottom: '1px solid rgba(255,255,255,0.1)',
+          borderBottom: '1px solid #2a2a2a',
           gap: 12,
         }}
       >

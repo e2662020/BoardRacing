@@ -1,7 +1,6 @@
 import React, { useRef, useState, useCallback, useEffect } from 'react';
 import type { ComponentData } from '../../types';
 import GridItem from './GridItem';
-import { useThemeStore } from '../../stores';
 
 interface GridCanvasProps {
   components: ComponentData[];
@@ -39,7 +38,6 @@ const GridCanvas: React.FC<GridCanvasProps> = ({
   const [isPanning, setIsPanning] = useState(false);
   const [panStart, setPanStart] = useState({ x: 0, y: 0 });
   const [isDraggingOver, setIsDraggingOver] = useState(false);
-  const { theme } = useThemeStore();
 
   useEffect(() => {
     const updateContainerSize = () => {
@@ -176,8 +174,8 @@ const GridCanvas: React.FC<GridCanvasProps> = ({
 
   const gridBackground = showGrid ? {
     backgroundImage: `
-      linear-gradient(rgba(0,0,0,0.1) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(0,0,0,0.1) 1px, transparent 1px)
+      linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)
     `,
     backgroundSize: `${gridSize}px ${gridSize}px`,
   } : {};
@@ -198,7 +196,7 @@ const GridCanvas: React.FC<GridCanvasProps> = ({
         width: '100%',
         height: '100%',
         overflow: 'hidden',
-        backgroundColor: theme === 'oreui' ? '#313233' : '#f0f2f5',
+        backgroundColor: '#111111',
         position: 'relative',
         cursor: isPanning ? 'grabbing' : 'default',
       }}
@@ -220,10 +218,10 @@ const GridCanvas: React.FC<GridCanvasProps> = ({
           style={{
             width: CANVAS_WIDTH,
             height: CANVAS_HEIGHT,
-            backgroundColor: '#fff',
+            backgroundColor: '#000000',
             position: 'relative',
             boxShadow: '0 0 30px rgba(0,0,0,0.5)',
-            border: isDraggingOver ? '4px dashed #1890ff' : '2px solid #ccc',
+            border: isDraggingOver ? '4px dashed #8b5cf6' : '2px solid #2a2a2a',
             transition: 'border-color 0.2s',
             ...gridBackground,
           }}
@@ -235,7 +233,7 @@ const GridCanvas: React.FC<GridCanvasProps> = ({
               left: '5%',
               right: '5%',
               bottom: '5%',
-              border: '1px dashed rgba(0,0,0,0.15)',
+              border: '1px dashed rgba(255,255,255,0.15)',
               pointerEvents: 'none',
             }}
           />
@@ -247,7 +245,7 @@ const GridCanvas: React.FC<GridCanvasProps> = ({
               left: 0,
               right: 0,
               height: '1px',
-              backgroundColor: 'rgba(0,0,0,0.08)',
+              backgroundColor: 'rgba(255,255,255,0.08)',
               pointerEvents: 'none',
             }}
           />
@@ -258,7 +256,7 @@ const GridCanvas: React.FC<GridCanvasProps> = ({
               top: 0,
               bottom: 0,
               width: '1px',
-              backgroundColor: 'rgba(0,0,0,0.08)',
+              backgroundColor: 'rgba(255,255,255,0.08)',
               pointerEvents: 'none',
             }}
           />
@@ -268,7 +266,7 @@ const GridCanvas: React.FC<GridCanvasProps> = ({
               position: 'absolute',
               top: -30,
               left: 0,
-              color: '#666',
+              color: '#a1a1aa',
               fontSize: '12px',
               fontFamily: 'monospace',
               whiteSpace: 'nowrap',
@@ -300,7 +298,7 @@ const GridCanvas: React.FC<GridCanvasProps> = ({
                 top: '50%',
                 left: '50%',
                 transform: 'translate(-50%, -50%)',
-                color: 'rgba(0,0,0,0.4)',
+                color: 'rgba(255,255,255,0.4)',
                 fontSize: '24px',
                 textAlign: 'center',
                 pointerEvents: 'none',
@@ -308,7 +306,7 @@ const GridCanvas: React.FC<GridCanvasProps> = ({
             >
               <div style={{ marginBottom: '16px', fontSize: '48px', opacity: 0.5 }}>📦</div>
               <div>拖拽组件到画布</div>
-              <div style={{ fontSize: '14px', marginTop: '12px', color: 'rgba(0,0,0,0.3)' }}>
+              <div style={{ fontSize: '14px', marginTop: '12px', color: 'rgba(255,255,255,0.3)' }}>
                 或从底部数据表拖拽单元格进行数据绑定
               </div>
             </div>
@@ -322,7 +320,7 @@ const GridCanvas: React.FC<GridCanvasProps> = ({
                 left: 0,
                 right: 0,
                 bottom: 0,
-                backgroundColor: 'rgba(24, 144, 255, 0.1)',
+                backgroundColor: 'rgba(0, 112, 243, 0.1)',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
@@ -332,7 +330,7 @@ const GridCanvas: React.FC<GridCanvasProps> = ({
               <div
                 style={{
                   padding: '16px 32px',
-                  backgroundColor: 'rgba(24, 144, 255, 0.9)',
+                  backgroundColor: 'rgba(0, 112, 243, 0.9)',
                   color: '#fff',
                   borderRadius: '8px',
                   fontSize: '16px',
@@ -351,16 +349,15 @@ const GridCanvas: React.FC<GridCanvasProps> = ({
           position: 'absolute',
           bottom: '16px',
           left: '16px',
-          backgroundColor: theme === 'oreui' ? '#48494A' : 'rgba(0,0,0,0.7)',
-          border: theme === 'oreui' ? '2px solid #58585A' : '1px solid rgba(255,255,255,0.2)',
+          backgroundColor: '#1a1a1a',
+          border: '1px solid #2a2a2a',
           padding: '8px 12px',
-          borderRadius: '4px',
-          color: '#FFFFFF',
+          borderRadius: '6px',
+          color: '#ffffff',
           fontSize: '12px',
           pointerEvents: 'none',
           display: 'flex',
           gap: '16px',
-          fontFamily: theme === 'oreui' ? '"NotoSans Bold", sans-serif' : 'inherit',
         }}
       >
         <span>组件: {components.length}</span>
@@ -381,12 +378,11 @@ const GridCanvas: React.FC<GridCanvasProps> = ({
           style={{
             width: '32px',
             height: '32px',
-            borderRadius: '4px',
-            border: theme === 'oreui' ? '2px solid #58585A' : '1px solid #444',
-            backgroundColor: theme === 'oreui' ? '#48494A' : '#222',
-            color: '#FFFFFF',
+            borderRadius: '6px',
+            border: '1px solid #2a2a2a',
+            backgroundColor: '#1a1a1a',
+            color: '#ffffff',
             cursor: 'pointer',
-            fontFamily: theme === 'oreui' ? '"NotoSans Bold", sans-serif' : 'inherit',
             fontSize: '14px',
           }}
         >
@@ -397,13 +393,12 @@ const GridCanvas: React.FC<GridCanvasProps> = ({
           style={{
             padding: '0 12px',
             height: '32px',
-            borderRadius: '4px',
-            border: theme === 'oreui' ? '2px solid #58585A' : '1px solid #444',
-            backgroundColor: theme === 'oreui' ? '#48494A' : '#222',
-            color: '#FFFFFF',
+            borderRadius: '6px',
+            border: '1px solid #2a2a2a',
+            backgroundColor: '#1a1a1a',
+            color: '#ffffff',
             cursor: 'pointer',
             fontSize: '12px',
-            fontFamily: theme === 'oreui' ? '"NotoSans Bold", sans-serif' : 'inherit',
           }}
         >
           {Math.round(scale * 100)}%
@@ -413,12 +408,11 @@ const GridCanvas: React.FC<GridCanvasProps> = ({
           style={{
             width: '32px',
             height: '32px',
-            borderRadius: '4px',
-            border: theme === 'oreui' ? '2px solid #58585A' : '1px solid #444',
-            backgroundColor: theme === 'oreui' ? '#48494A' : '#222',
-            color: '#FFFFFF',
+            borderRadius: '6px',
+            border: '1px solid #2a2a2a',
+            backgroundColor: '#1a1a1a',
+            color: '#ffffff',
             cursor: 'pointer',
-            fontFamily: theme === 'oreui' ? '"NotoSans Bold", sans-serif' : 'inherit',
             fontSize: '14px',
           }}
         >
@@ -439,13 +433,12 @@ const GridCanvas: React.FC<GridCanvasProps> = ({
           style={{
             padding: '0 12px',
             height: '32px',
-            borderRadius: '4px',
-            border: theme === 'oreui' ? '2px solid #58585A' : '1px solid #444',
-            backgroundColor: theme === 'oreui' ? '#48494A' : '#222',
-            color: '#FFFFFF',
+            borderRadius: '6px',
+            border: '1px solid #2a2a2a',
+            backgroundColor: '#1a1a1a',
+            color: '#ffffff',
             cursor: 'pointer',
             fontSize: '12px',
-            fontFamily: theme === 'oreui' ? '"NotoSans Bold", sans-serif' : 'inherit',
           }}
         >
           居中
@@ -457,11 +450,11 @@ const GridCanvas: React.FC<GridCanvasProps> = ({
           position: 'absolute',
           top: '16px',
           left: '16px',
-          backgroundColor: theme === 'oreui' ? '#48494A' : 'rgba(0,0,0,0.7)',
-          border: theme === 'oreui' ? '2px solid #58585A' : '1px solid rgba(255,255,255,0.2)',
+          backgroundColor: '#1a1a1a',
+          border: '1px solid #2a2a2a',
           padding: '8px 12px',
-          borderRadius: '4px',
-          color: theme === 'oreui' ? '#D0D1D4' : '#999',
+          borderRadius: '6px',
+          color: '#a1a1aa',
           fontSize: '11px',
           pointerEvents: 'none',
         }}

@@ -5,9 +5,11 @@ import {
   LogoutOutlined,
   BellOutlined,
   SettingOutlined,
-  SkinOutlined,
+  SunOutlined,
+  MoonOutlined,
 } from '@ant-design/icons';
-import { useAuthStore, useThemeStore } from '../../stores';
+import { useAuthStore } from '../../stores';
+import { useThemeStore } from '../../stores/themeStore';
 import { useNavigate } from 'react-router-dom';
 
 const { Header: AntHeader } = Layout;
@@ -22,10 +24,6 @@ const Header: React.FC = () => {
     navigate('/login');
   };
 
-  const handleAvatarClick = () => {
-    toggleTheme();
-  };
-
   const items = [
     {
       key: 'profile',
@@ -36,12 +34,6 @@ const Header: React.FC = () => {
       key: 'settings',
       icon: <SettingOutlined />,
       label: '系统设置',
-    },
-    {
-      key: 'theme',
-      icon: <SkinOutlined />,
-      label: `切换主题 (${theme === 'modern' ? '现代' : 'OreUI'})`,
-      onClick: toggleTheme,
     },
     {
       type: 'divider' as const,
@@ -58,35 +50,41 @@ const Header: React.FC = () => {
     <AntHeader
       className="app-header"
       style={{
-        background: '#001529',
+        background: theme === 'dark' ? '#111111' : '#f4f4f5',
         padding: '0 24px',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'flex-end',
-        boxShadow: '0 1px 4px rgba(0,0,0,0.3)',
+        boxShadow: '0 1px 4px rgba(0,0,0,0.1)',
         position: 'fixed',
         top: 0,
         right: 0,
         left: 220,
         zIndex: 100,
+        borderBottom: `1px solid ${theme === 'dark' ? '#2a2a2a' : '#e4e4e7'}`,
       }}
     >
-      <Space size={24}>
+      <Space size={16}>
+        <Button
+          type="text"
+          icon={theme === 'dark' ? <SunOutlined /> : <MoonOutlined />}
+          onClick={toggleTheme}
+          style={{ color: theme === 'dark' ? '#ffffff' : '#000000' }}
+        />
         <Badge count={5} size="small">
-          <Button type="text" icon={<BellOutlined />} style={{ color: '#fff' }} />
+          <Button type="text" icon={<BellOutlined />} style={{ color: theme === 'dark' ? '#ffffff' : '#000000' }} />
         </Badge>
         <Dropdown menu={{ items }} placement="bottomRight">
           <Space style={{ cursor: 'pointer' }}>
             <Avatar 
               icon={<UserOutlined />} 
-              onClick={handleAvatarClick}
               style={{ 
                 cursor: 'pointer',
-                backgroundColor: theme === 'oreui' ? '#3C8527' : '#1890ff',
+                backgroundColor: '#8b5cf6',
               }}
             />
-            <span style={{ color: '#fff' }}>{user?.username || '未登录'}</span>
-            <span style={{ color: 'rgba(255,255,255,0.65)', fontSize: 12 }}>
+            <span style={{ color: theme === 'dark' ? '#ffffff' : '#000000' }}>{user?.username || '未登录'}</span>
+            <span style={{ color: theme === 'dark' ? '#a1a1aa' : '#52525b', fontSize: 12 }}>
               ({user?.role === 'admin' ? '管理员' : user?.role === 'commentator' ? '解说' : user?.role === 'designer' ? '设计师' : user?.role === 'director' ? '导播' : '赛事'})
             </span>
           </Space>

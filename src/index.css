@@ -16,36 +16,19 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: #f0f2f5;
-}
-
-/* OreUI 主题背景色 - 使用更高优先级 */
-body.theme-oreui,
-html body.theme-oreui {
-  background-color: #48494A !important;
-}
-
-body.theme-oreui #root {
-  background-color: #48494A;
-  min-height: 100vh;
+  background: #000000;
 }
 
 #root {
   min-height: 100vh;
 }
 
-/* Ant Design 样式覆盖 */
+/* Ant Design 基础样式 */
 .ant-layout {
-  background: #f0f2f5;
-}
-
-/* OreUI 主题布局背景 */
-.theme-oreui .ant-layout {
-  background-color: #48494A !important;
+  background: #000000;
 }
 
 .ant-layout-sider {
-  background: #001529;
   margin: 0 !important;
   padding: 0 !important;
   left: 0 !important;
@@ -56,46 +39,32 @@ body.theme-oreui #root {
   padding: 0 !important;
 }
 
-/* 确保侧边栏紧贴左侧 */
 .ant-layout-has-sider > .ant-layout-sider {
   left: 0 !important;
   margin-left: 0 !important;
 }
 
-.ant-menu-dark {
-  background: #001529;
-}
-
 .ant-card {
   border-radius: 8px;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
-}
-
-.ant-card-hoverable:hover {
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-.ant-table {
-  background: #fff;
 }
 
 /* 自定义滚动条 */
 ::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+  width: 8px;
+  height: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #f1f1f1;
+  background: #111111;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #c1c1c1;
-  border-radius: 3px;
+  background: #2a2a2a;
+  border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #a8a8a8;
+  background: #404040;
 }
 
 /* 动画效果 */
@@ -120,7 +89,7 @@ body.theme-oreui #root {
 
 /* 选中样式 */
 .selected {
-  outline: 2px solid #1890ff;
+  outline: 2px solid #0070f3;
   outline-offset: 2px;
 }
 

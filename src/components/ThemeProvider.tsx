@@ -1,17 +1,15 @@
 import React, { useEffect } from 'react';
-import { useThemeStore } from '../stores';
+import { useThemeStore } from '../stores/themeStore';
 
 interface ThemeProviderProps {
   children: React.ReactNode;
 }
 
 const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
-  const { theme } = useThemeStore();
+  const theme = useThemeStore((state) => state.theme);
 
   useEffect(() => {
-    // 移除之前的主题类
-    document.body.classList.remove('theme-modern', 'theme-oreui');
-    // 添加当前主题类
+    document.body.classList.remove('theme-dark', 'theme-light');
     document.body.classList.add(`theme-${theme}`);
   }, [theme]);
 
